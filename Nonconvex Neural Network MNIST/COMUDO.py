@@ -184,7 +184,7 @@ Eta = torch.tensor(1e-3, device=device)
 V = torch.tensor(2, device=device)
 Qtn = torch.ones(N, device=device) * V
 Gtn = torch.zeros(N, device=device)
-Pnbar = torch.tensor((10 ** ((17-30)/10)) * 48910/500, device=device)
+Pnbar = torch.tensor((10 ** ((18-30)/10)) * 48910/500, device=device)
 
 transmit_power_history = [0]
 transmit_power_history_dBm = [0]
@@ -305,3 +305,4 @@ for t in range(T-1):
             plot_accuracy.append((plot_accuracy[t-1] * t + total_correct / 15000 * 100) / (t+1))
 
         print("t: {} Accuracy: {}, Power: {}, VQ: {}".format(t+1, plot_accuracy[t], transmit_power_history_dBm[t+1], torch.mean(Qtn).item()))
+
