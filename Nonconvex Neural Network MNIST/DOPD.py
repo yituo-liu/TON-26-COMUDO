@@ -178,7 +178,7 @@ plot_accuracy = []
 plot_loss = []
 
 Lambda = torch.tensor(1e-5, device=device)
-Gamma = torch.tensor(0.75e-1, device=device)
+Gamma = torch.tensor(0.5e-1, device=device)
 Gtn = torch.zeros(N, device=device)
 Pnbar = torch.tensor((10 ** ((17-30)/10)) * 48910/500, device=device)
 
@@ -301,4 +301,5 @@ for t in range(T-1):
             plot_accuracy.append(total_correct / 15000 * 100)
         else:
             plot_accuracy.append((plot_accuracy[t-1] * t + total_correct / 15000 * 100) / (t+1))
+
         print("t: {} Accuracy: {}, Power: {}".format(t+1, plot_accuracy[t], transmit_power_history_dBm[t+1]))
