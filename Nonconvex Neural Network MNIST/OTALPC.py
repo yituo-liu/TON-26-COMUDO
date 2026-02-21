@@ -179,7 +179,7 @@ weight_matrix_gpu = torch.tensor(weight_matrix, dtype=torch.float32).to(device)
 plot_accuracy = []
 plot_loss = []
 
-Pnbar = torch.tensor((10 ** ((17-30)/10)) * 48910/500, device=device)
+Pnbar = torch.tensor((10 ** ((18-30)/10)) * 48910/500, device=device)
 
 Kappa = torch.tensor(5e-2, device=device)
 
@@ -276,4 +276,5 @@ for t in range(T-1):
             plot_accuracy.append(total_correct / 15000 * 100)
         else:
             plot_accuracy.append((plot_accuracy[t-1] * t + total_correct / 15000 * 100) / (t+1))
+
         print("t: {} Accuracy: {}, Power: {}".format(t+1, plot_accuracy[t], transmit_power_history_dBm[t+1]))
